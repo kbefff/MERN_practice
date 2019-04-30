@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const config = require('config');
 
+
 // a middle ware function is a function that has access to the req and res. the
 // next moves to the next action
 module.exports = function (req, res, next) {
