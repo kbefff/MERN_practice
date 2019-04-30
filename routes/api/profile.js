@@ -114,6 +114,10 @@ router.post('/', [
         }
 
         // Create
+        profile = new Profile(profileFields)
+
+        await profile.save();
+        res.json(profile);
 
     } catch (err) {
         console.error(err.message);
