@@ -8,7 +8,7 @@ const config = require('config');
 const db = config.get('mongoURI');
 
 // Connect to the Mongo DB
-mongoose.connect(db, {useNewUrlParser: true});
+mongoose.connect(db, {useNewUrlParser: true, useCreateIndex: true});
 
 // Init Middleware
 app.use(express.urlencoded({ extended: true }));
