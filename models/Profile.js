@@ -4,7 +4,7 @@ const ProfileSchema = new mongoose.Schema({
     user: {
         // connect to id in user model that Mongoose creates dynamically
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'user'
     },
     company: {
         type: String
