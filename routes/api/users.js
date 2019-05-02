@@ -6,9 +6,11 @@ const jwt = require("jsonwebtoken");
 const config = require('config');
 const {check, validationResult} = require('express-validator/check');
 
-const User = require('../../models/User')
+const User = require('../../models/User');
 
-// @route   GET api/users @desc    Test route @access  Public
+// @route   GET api/users 
+// @desc    Test route 
+// @access  Public
 router.post('/', [
     check('name', 'Name is required')
         .not()
@@ -43,7 +45,6 @@ router.post('/', [
         }
 
         // Get users gravatar (based on email)
-
         const avatar = gravatar.url(email, {
             s: '200',
             r: 'pg',

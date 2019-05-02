@@ -6,7 +6,8 @@ const jwt = require("jsonwebtoken");
 const config = require('config');
 const {check, validationResult} = require('express-validator/check');
 
-const User = require('../../models/User')
+const User = require('../../models/User');
+
 // @route   GET api/auth 
 // @desc    Test route 
 // @access  Public
@@ -29,7 +30,6 @@ router.get('/', auth, async(req, res) => {
 // @route   GET api/auth 
 // @desc Authenticate user & get token 
 // @access  Public
-
 router.post('/', [
     check('email', 'Please include a valid email').isEmail(),
     check('password', 'Password is required').exists()
@@ -60,20 +60,21 @@ router.post('/', [
                 });
         }
 
-        //    make sure password matches - password is plain text password entered and user.password is the stored password
+        //    make sure password matches - password is plain text password entered and
+        //    user.password is the stored password
         const isMatch = await bcrypt.compare(password, user.password)
-        if (!isMatch){
+        if (!isMatch) {
             return res
-            .status(400)
-            .json({
-                errors: [
-                    {
-                        msg: 'Invalid Credentials'
-                    }
-                ]
-            });
+                .status(400)
+                .json({
+                    errors: [
+                        {
+                            msg: 'Invalid Credentials'
+                        }
+                    ]
+                });
         }
-        // Return jsonwebtoken 
+        // Return jsonwebtoken
         const payload = {
             user: {
                 id: user.id

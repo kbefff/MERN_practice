@@ -26,4 +26,4 @@ module.exports = function (req, res, next) {
             .json({msg: 'Token is not valid'});
     }
 
-}
+};
