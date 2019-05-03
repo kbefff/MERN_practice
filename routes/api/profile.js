@@ -6,9 +6,8 @@ const {check, validationResult} = require('express-validator/check');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 
-// @route   GET api/profile/me 
-// @desc    Get current user's profile 
-// @access  Private
+// @route   GET api/profile/me @desc    Get current user's profile @access
+// Private
 router.get('/me', auth, async(req, res) => {
     try {
         const profile = await Profile
@@ -30,9 +29,8 @@ router.get('/me', auth, async(req, res) => {
     }
 });
 
-// @route   POST api/profile 
-// @desc    Create or update a user profile 
-// @access  Private
+// @route   POST api/profile @desc    Create or update a user profile @access
+// Private
 router.post('/', [
     auth,
     [
@@ -129,9 +127,7 @@ router.post('/', [
     }
 })
 
-// @route   Get api/profile 
-// @desc    Get all profiles 
-// @access  Public
+// @route   Get api/profile @desc    Get all profiles @access  Public
 router.get('/', async(req, res) => {
     try {
         // find all profiles. Add names and Avatar which are part of the 'user'
@@ -148,8 +144,7 @@ router.get('/', async(req, res) => {
     }
 });
 
-// @route   Get api/profile/user/:user_id 
-// @desc    Get profile by user ID
+// @route   Get api/profile/user/:user_id @desc    Get profile by user ID
 // @access  Public
 router.get('/user/:user_id', async(req, res) => {
     try {
@@ -179,9 +174,8 @@ router.get('/user/:user_id', async(req, res) => {
     }
 });
 
-// @route   DELETE api/profile 
-// @desc    Delete profile, user and posts 
-// @access  Private
+// @route   DELETE api/profile @desc    Delete profile, user and posts @access
+// Private
 router.delete('/', auth, async(req, res) => {
     try {
         // TODO: remove users posts remove profile
@@ -198,9 +192,8 @@ router.delete('/', auth, async(req, res) => {
     }
 });
 
-// @route   PUT api/profile/experience 
-// @desc    Add profile experience 
-// @access  Private
+// @route   PUT api/profile/experience @desc    Add profile experience @access
+// Private
 router.put('/experience', [
     auth,
     [
@@ -220,7 +213,7 @@ router.put('/experience', [
         return res
             .status(400)
             .json({
-                errrors: errors.array()
+                errors: errors.array()
             });
     }
 
