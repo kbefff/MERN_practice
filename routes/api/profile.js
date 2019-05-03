@@ -6,8 +6,9 @@ const {check, validationResult} = require('express-validator/check');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 
-// @route   GET api/profile/me @desc    Get current user's profile @access
-// Private
+// @route   GET api/profile/me 
+// @desc    Get current user's profile 
+// @access  Private
 router.get('/me', auth, async(req, res) => {
     try {
         const profile = await Profile
@@ -29,8 +30,9 @@ router.get('/me', auth, async(req, res) => {
     }
 });
 
-// @route   POST api/profile @desc    Create or update a user profile @access
-// Private
+// @route   POST api/profile 
+// @desc    Create or update a user profile 
+// @access  Private
 router.post('/', [
     auth,
     [
@@ -144,7 +146,8 @@ router.get('/', async(req, res) => {
     }
 });
 
-// @route   Get api/profile/user/:user_id @desc    Get profile by user ID
+// @route   Get api/profile/user/:user_id 
+// @desc    Get profile by user ID
 // @access  Public
 router.get('/user/:user_id', async(req, res) => {
     try {
@@ -174,11 +177,11 @@ router.get('/user/:user_id', async(req, res) => {
     }
 });
 
-// @route   DELETE api/profile @desc    Delete profile, user and posts @access
-// Private
+// @route   DELETE api/profile 
+// @desc    Delete profile, user and posts 
+// @access  Private
 router.delete('/', auth, async(req, res) => {
     try {
-        // TODO: remove users posts remove profile
         await Profile.findOneAndRemove({user: req.user.id});
         // remove user
         await User.findOneAndRemove({_id: req.user.id});
@@ -192,8 +195,10 @@ router.delete('/', auth, async(req, res) => {
     }
 });
 
-// @route   PUT api/profile/experience @desc    Add profile experience @access
-// Private
+// @route   PUT api/profile/experience 
+// @desc    Add profile experience 
+// @access  Private
+// TODO: update user experience is currently not working. Fix
 router.put('/experience', [
     auth,
     [
@@ -207,7 +212,8 @@ router.put('/experience', [
             .not()
             .isEmpty()
     ]
-], async(req, res) => {
+], 
+async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res
@@ -248,6 +254,7 @@ router.put('/experience', [
         await profile.save();
 
         res.json(profile);
+        console.log(hi);
 
     } catch (err) {
         console.error(err.message);
