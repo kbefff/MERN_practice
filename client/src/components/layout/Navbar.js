@@ -1,10 +1,12 @@
 import React from "react";
+import {BrowserRouter as Router, Route, Link} from "react-router-dom";
+
 
 const Navbar = () => {
     return (
         <nav className="navbar bg-dark">
             <h1>
-                <a href="index.html">
+                <a href="/">
                     <i className="fas fa-code"></i>
                     DevConnector</a>
             </h1>
