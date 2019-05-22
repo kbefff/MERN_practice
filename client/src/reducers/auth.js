@@ -23,7 +23,7 @@ export default function(state = initialState, action){
                 isAuthenticated: true,
                 loading: false,
                 user: payload
-      };
+            };
         case REGISTER_SUCCESS:
             // save token in local storage
             localStorage.setItem('token', payload.token);
@@ -32,7 +32,7 @@ export default function(state = initialState, action){
                 ...payload,
                 isAuthenticated: true,
                 loading: false
-            }
+            };
         case REGISTER_FAIL:
         case AUTH_ERROR:
             localStorage.removeItem('token');
