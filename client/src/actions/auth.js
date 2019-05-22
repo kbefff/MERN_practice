@@ -14,7 +14,10 @@ export const loadUser = () => async dispatch => {
     try {
         const res = await axios.get('/api/auth');
 
-        dispatch({type: USER_LOADED, payload: res.data});
+        dispatch({
+            type: USER_LOADED, 
+            payload: res.data
+        });
     } catch (err) {
         dispatch({type: AUTH_ERROR});
     }
@@ -33,7 +36,10 @@ export const register = ({name, email, password}) => async dispatch => {
     try {
         const res = await axios.post('/api/users', body, config);
 
-        dispatch({type: REGISTER_SUCCESS, payload: res.data});
+        dispatch({
+            type: REGISTER_SUCCESS, 
+            payload: res.data
+        });
 
         dispatch(loadUser());
     } catch (err) {
@@ -43,7 +49,9 @@ export const register = ({name, email, password}) => async dispatch => {
             errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
         }
 
-        dispatch({type: REGISTER_FAIL});
+        dispatch({
+            type: REGISTER_FAIL
+        });
     }
 };
 
