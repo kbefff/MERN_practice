@@ -17,7 +17,7 @@ export default function(state = initialState, action){
     switch(type){
         case REGISTER_SUCCESS:
             // save token in local storage
-            localStorage.setItem('token', paylooad.token);
+            localStorage.setItem('token', payload.token);
             return {
                 ...state,
                 ...payload,
