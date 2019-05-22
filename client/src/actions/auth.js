@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { setAlert } from './alert';
 import {
-    REGISTER_FAIL,
     REGISTER_SUCCESS,
+    REGISTER_FAIL,
     USER_LOADED,
     AUTH_ERROR
 } from './types';
@@ -10,7 +10,9 @@ import setAuthToken from '../utils/setAuthToken';
 
 // Load User
 export const loadUser = () => async dispatch => {
+    // if there is a token in local storage
     if (localStorage.token) {
+    // put into global header
       setAuthToken(localStorage.token);
     }
   
